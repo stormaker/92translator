@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>92房东 - 多语言翻译器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>92房东 - 多语言翻译器</h1>
+            <button id="settingsBtn" class="settings-btn">⚙️ 设置</button>
+        </header>
+
+        <main>
+            <div class="language-selector">
+                <div class="language-select-group">
+                    <label for="sourceLang">源语言:</label>
+                    <select id="sourceLang" class="language-select">
+                        <option value="auto">自动检测</option>
+                        <option value="Chinese">中文</option>
+                        <option value="English" selected>英文</option>
+                        <option value="Russian">俄语</option>
+                        <option value="Japanese">日语</option>
+                        <option value="French">法语</option>
+                        <option value="German">德语</option>
+                        <option value="Spanish">西班牙语</option>
+                        <option value="Portuguese">葡萄牙语</option>
+                        <option value="Thai">泰语</option>
+                        <option value="Vietnamese">越南语</option>
+                        <option value="Malay">马来语</option>
+                    </select>
+                </div>
+
+                <button id="swapLanguages" class="swap-btn" title="交换语言">
+                    ⇄
+                </button>
+
+                <div class="language-select-group">
+                    <label for="targetLang">目标语言:</label>
+                    <select id="targetLang" class="language-select">
+                        <option value="Chinese">中文</option>
+                        <option value="English">英文</option>
+                        <option value="Russian" selected>俄语</option>
+                        <option value="Japanese">日语</option>
+                        <option value="French">法语</option>
+                        <option value="German">德语</option>
+                        <option value="Spanish">西班牙语</option>
+                        <option value="Portuguese">葡萄牙语</option>
+                        <option value="Thai">泰语</option>
+                        <option value="Vietnamese">越南语</option>
+                        <option value="Malay">马来语</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="translation-area">
+                <div class="input-section">
+                    <div class="language-label">
+                        <span id="sourceLangLabel">英文</span>
+                        <button id="clearBtn" class="clear-btn">清空</button>
+                    </div>
+                    <textarea 
+                        id="inputText" 
+                        placeholder="请输入要翻译的内容..."
+                        maxlength="5000"
+                    ></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span>/5000
+                    </div>
+                </div>
+
+                <div class="translate-section">
+                    <button id="translateBtn" class="translate-btn">
+                        <span>翻译</span>
+                        <div class="loading" id="loading"></div>
+                    </button>
+                </div>
+
+                <div class="output-section">
+                    <div class="language-label">
+                        <span id="targetLangLabel">俄语</span>
+                        <button id="copyBtn" class="copy-btn">复制</button>
+                    </div>
+                    <textarea 
+                        id="outputText" 
+                        placeholder="翻译结果将显示在这里..."
+                        readonly
+                    ></textarea>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h3>翻译历史</h3>
+                <div id="historyList" class="history-list">
+                    <p class="no-history">暂无翻译历史</p>
+                </div>
+                <button id="clearHistoryBtn" class="clear-history-btn">清空历史</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- 设置弹窗 -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>设置</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label for="apiKey">API密钥:</label>
+                    <input type="password" id="apiKey" placeholder="请输入您的DASHSCOPE_API_KEY">
+                    <small>您的API密钥将安全存储在本地浏览器中</small>
+                </div>
+                
+                <div class="setting-group">
+                    <label for="autoTranslate">自动翻译:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="autoTranslate">
+                        <span class="slider"></span>
+                    </label>
+                    <small>输入停止后自动开始翻译</small>
+                </div>
+
+                <div class="setting-group">
+                    <label for="saveHistory">保存历史:</label>
+                    <label class="switch">
+                        <input type="checkbox" id="saveHistory" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <small>保存翻译历史记录</small>
+                </div>
+
+                <div class="setting-group">
+                    <label for="theme">主题:</label>
+                    <select id="theme">
+                        <option value="light">浅色主题</option>
+                        <option value="dark">深色主题</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveSettings" class="save-btn">保存设置</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
